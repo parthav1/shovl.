@@ -20,7 +20,14 @@ def search(search_query,
     
     soup = BeautifulSoup(response.content, 'html.parser')
     div_target = soup.find_all('div', class_= 'company-info-title pull-left')
-    company_names = div_target.__getattribute__('title')
+    
+    company_names = []
+    for item in div_target:
+        company_name = item.find('h3').find('a')['title']
+        company_names.append(company_name.strip())
+    
+    print(company_names)
+
 
 def main():
     search(parse_args().query,
