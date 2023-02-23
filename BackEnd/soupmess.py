@@ -44,16 +44,16 @@ def search(search_query,
                 url = href[7:].split("&")[0]
                 top_urls.append(url)
 
-    # for url in top_urls:
-    #     response = requests.get(url)
-    #     soup = BeautifulSoup(response.content, "html.parser")
-    #     company_name = soup.find("h1").text.strip()
-    #     location = soup.find("div", class_="location").text.strip()
-    #     products = [p.text.strip() for p in soup.find_all("li", class_="product")]
-    #     # log the vendor information
-    #     print(f"Company Name: {company_name}")
-    #     print(f"Location: {location}")
-    #     print(f"Products/Services: {', '.join(products)}")
+    for url in top_urls:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        company_name = soup.find("h1").text.strip()
+        location = soup.find("div", class_="location").text.strip()
+        products = [p.text.strip() for p in soup.find_all("li", class_="product")]
+        # log the vendor info
+        print(f"Company Name: {company_name}")
+        print(f"Location: {location}")
+        print(f"Products/Services: {', '.join(products)}")
 
 def main():
     search(parse_args().query,
