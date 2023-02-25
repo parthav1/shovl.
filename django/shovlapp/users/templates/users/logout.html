@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>shovl.</title>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex flex-col justify-center h-screen text-center">
+      <h1 class="text-white text-3xl">You have been logged out.</h1>
+      <p class="mt-4 text-xl text-gray-500 dark:text-gray-400 sm:mt-0">
+        Need to log back in?
+        <a href="{% url 'login' %}" class="text-gray-700 underline dark:text-gray-200"
+          >Log in</a
+        >.
+      </p>
+    </div>
+</body>
+<style>
+  .crispy-form label {
+    color: rgb(229 229 229);
+  }
+  .crispy-form small {
+    color: rgb(163 163 163);
+  }
+</style>
+</html>

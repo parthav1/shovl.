@@ -24,17 +24,13 @@
           <h1
             class="mt-6 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl md:text-4xl"
           >
-            welcome to
+            Log in to
             <span
               class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text font-extrabold text-transparent"
             >
                shovl.
             </>
           </h1>
-  
-          <p class="mt-4 leading-relaxed text-gray-500 dark:text-gray-400">
-            Sign up to start saving your top vendors!
-          </p>
   
           <form method="POST" class="mt-8 crispy-form">
             {% csrf_token %}
@@ -46,13 +42,13 @@
               <button
                 class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
               >
-                Create an account
+                Log In
               </button>
   
               <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
-                Already have an account?
-                <a href="{% url 'login' %}" class="text-gray-700 underline dark:text-gray-200"
-                  >Log in</a
+                Need to make an account?
+                <a href="{% url 'register' %}" class="text-gray-700 underline dark:text-gray-200"
+                  >Sign up</a
                 >.
               </p>
             </div>
