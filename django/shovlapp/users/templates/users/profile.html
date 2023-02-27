@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>shovl.</title>
+</head>
+<body class="bg-gray-900">
+    <div class="flex h-screen flex-col justify-between border-r border-gray-600 bg-gray-800 w-1/5">
+        <div class="px-4 py-6">
+        <a 
+            href="{% url 'search-index' %}"
+            class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-5xl font-extrabold text-transparent"
+        >
+             shovl.
+        </>
+      
+          <nav aria-label="Main Nav" class="mt-6 flex flex-col space-y-1">
+            <a
+              href="#"
+              class="flex items-center gap-2 rounded-lg bg-slate-600 hover:bg-slate-500 px-4 py-2 text-gray-100"
+            >
+            <svg class="h-4 w-4 fill-white opacity-75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/></svg>
+      
+              <span class="text-sm font-medium"> Watchlist </span>
+            </a>
+
+            <a
+                href="{% url 'logout' %}"
+                class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-400 hover:text-gray-500 hover:fill-gray-500"
+            >
+            <svg class="h-4 w-4 fill-white opacity-75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+
+                <span class="text-sm font-medium"> Log Out </span>
+            </a>
+            </nav>
+      
+        </div>
+      
+        <div class="sticky inset-x-0 bottom-0 border-t border-gray-600">
+          <a href="#" class="flex items-center gap-2 bg-gray-700 text-white p-4 hover:bg-gray-600">
+            <img
+              alt="placeholder"
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+              class="h-10 w-10 rounded-full object-cover"
+            />
+      
+            <div>
+              <p class="text-xs">
+                <strong class="block font-medium">{{ user.get_username }}</strong>
+      
+                <span> {{ user.email }} </span>
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    
+      <div>
+
+      </div>
+</body>
+
+</html>
