@@ -28,6 +28,20 @@ def get_company_reviews(company_profile):
 
     return company_reviews
 
+def get_first_two_ratings(company_profile):
+
+    url = "https://www.goodfirms.co" + str(company_profile) + "#reviews"
+    response = requests.get(url)
+
+    soup = BeautifulSoup(response.content, 'lxml')
+    target = soup.find('div', class_='review-rating-breakdown-star')
+
+    ratings = []
+    for i in range(2):
+        ratings.append(len(target.find('div')))
+
+    return ratings
+
 def searchGoodFirms(category, data_path):
     companies = {}
     for page in range(1, 6):
@@ -45,6 +59,7 @@ def searchGoodFirms(category, data_path):
             print(company_name)
             companies[(company_name.strip())] = {
                 'category': category,
+                'first_two_ratings': '',
                 'reviews': '',
                 'price': '',
                 'website_url': '',
@@ -59,6 +74,8 @@ def searchGoodFirms(category, data_path):
 
             reviews = get_company_reviews(profile)
 
+            first_two_ratings = get_first_two_ratings(profile)
+
             price = item.find('div', class_= 'firm-pricing').text
 
             date_founded = item.find('div', class_= 'firm-founded').text
@@ -66,12 +83,13 @@ def searchGoodFirms(category, data_path):
             website_url = item.find('div', class_= 'firms-r').find('a').attrs['href']
 
             companies[(company_name.strip())]['reviews'] = reviews
+            companies[(company_name.strip())]['first_two_ratings'] = first_two_ratings
             companies[(company_name.strip())]['price'] = price
             companies[(company_name.strip())]['website_url'] = website_url
             companies[(company_name.strip())]['date_founded'] = date_founded
 
             # need to sleep thread to limit number of requests, adjust time if needed
-            time.sleep(7)
+            #time.sleep(5)
 
             with open(data_path, mode='a', encoding='utf-8', newline='') as file:
                 writer = csv.writer(file)
