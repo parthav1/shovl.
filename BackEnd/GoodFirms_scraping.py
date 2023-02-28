@@ -30,7 +30,7 @@ def get_company_reviews(company_profile):
 
 def searchGoodFirms(category, data_path):
     companies = {}
-    for page in range(1, 14):
+    for page in range(1, 2):
         url = "https://www.goodfirms.co/" + category + "?sort_by=1"
         if page > 1:
             url = url + "&page=" + str(page)
@@ -51,6 +51,7 @@ def searchGoodFirms(category, data_path):
                 'profile': '',
                 'reviews': '',
                 'price': '',
+                'date_founded': ''
             }
 
             try:
@@ -58,15 +59,22 @@ def searchGoodFirms(category, data_path):
                 companies[(company_name.strip())]['profile'] = profile
             except AttributeError:
                 pass
-            print(profile)
+            #print(profile)
 
             reviews = get_company_reviews(profile)
-            print(reviews)
+            #print(reviews)
 
             price = item.find('div', class_= 'firm-pricing').text
-            print(price)
+            #print(price)
 
-            time.sleep(7)
+            date_founded = item.find('div', class_= 'firm-founded')
+
+            companies[(company_name.strip())]['profile'] = reviews
+            companies[(company_name.strip())]['reviews'] = reviews
+            companies[(company_name.strip())]['price'] = price
+            companies[(company_name.strip())]['date_founded'] = date_founded
+
+            time.sleep(8)
 
             with open(data_path, mode='a', encoding='utf-8', newline='') as file:
                 writer = csv.writer(file)
@@ -75,14 +83,19 @@ def searchGoodFirms(category, data_path):
                         company_name.strip(),
                         data.get('category', ''),
                         data.get('price'),
+                        data.get('date_founded'),
                         '; '.join(data.get('reviews', []))
                     ])
 
 
 def main():
     searchGoodFirms("big-data-analytics", parse_args().data)
-    searchGoodFirms("artificial-intelligence", parse_args().data)
-
+    #searchGoodFirms("artificial-intelligence", parse_args().data)
+    #searchGoodFirms("it-services", parse_args().data)
+    #searchGoodFirms("cloud-computing-companies", parse_args().data)
+    #searchGoodFirms("augmented-virtual-reality", parse_args().data)
+    #searchGoodFirms("internet-of-things", parse_args().data)
+    #searchGoodFirms("ecommerce-development-companies", parse_args().data)
 
 if __name__ == "__main__":
     main()
