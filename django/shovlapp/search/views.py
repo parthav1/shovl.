@@ -5,7 +5,7 @@ from django.urls import reverse
 # Create your views here.
 from django.http import HttpResponse
 
-techs = ['Augmented / Virtual Reality', 'Artificial Intelligence / Machine Learning', 'Big Data / Business Intelligence', 'Blockchain', 'Cloud Services', 'Cybersecurity', 'eCommerce', 'Internet of Things (IOT)', 'IT Services', 'Software Development', 'Software Testing', 'Web Development']
+techs = ['Augmented / Virtual Reality', 'Artificial Intelligence / Machine Learning', 'Big Data / Business Intelligence', 'Blockchain', 'Cloud Services', 'Cybersecurity', 'eCommerce', 'Internet of Things (IoT)', 'IT Services', 'Software Development', 'Software Testing', 'Web Development']
 
 
 def index(request, techs=techs):

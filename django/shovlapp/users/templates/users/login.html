@@ -1,26 +1,25 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>shovl.</title>
-</head>
-<body class="bg-gray-900 text-white">
-{% load crispy_forms_tags %}
-{% if messages %}
-  {% for message in messages %}
-    <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+  </head>
+  <body class="bg-gray-900 text-white">
+    {% load crispy_forms_tags %} {% if messages %} {% for message in messages %}
+    <div
+      class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"
+      role="alert"
+    >
       <p class="text-sm">{{ message }}</p>
     </div>
-  {% endfor %}
-{% endif %}
-<section class="bg-white dark:bg-gray-900">
+    {% endfor %} {% endif %}
+    <section class="bg-white dark:bg-gray-900">
       <div
         class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
       >
         <div class="max-w-xl lg:max-w-3xl">
-  
           <h1
             class="mt-6 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl md:text-4xl"
           >
@@ -28,41 +27,41 @@
             <span
               class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text font-extrabold text-transparent"
             >
-               shovl.
-            </>
+              shovl.
+            </span>
           </h1>
-  
+
           <form method="POST" class="mt-8 crispy-form">
             {% csrf_token %}
-            <div class="flex flex-col text-white w-full">
-              {{ form|crispy }}
-            </div>
-          
+            <div class="flex flex-col text-white w-full">{{ form|crispy }}</div>
+
             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
               <button
                 class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
               >
                 Log In
               </button>
-  
+
               <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
                 Need to make an account?
-                <a href="{% url 'register' %}" class="text-gray-700 underline dark:text-gray-200"
+                <a
+                  href="{% url 'register' %}"
+                  class="text-gray-700 underline dark:text-gray-200"
                   >Sign up</a
                 >.
               </p>
             </div>
           </form>
         </div>
-    </div>
-  </section>  
-</body>
-<style>
-  .crispy-form label {
-    color: rgb(229 229 229);
-  }
-  .crispy-form small {
-    color: rgb(163 163 163);
-  }
-</style>
+      </div>
+    </section>
+  </body>
+  <style>
+    .crispy-form label {
+      color: rgb(229 229 229);
+    }
+    .crispy-form small {
+      color: rgb(163 163 163);
+    }
+  </style>
 </html>
