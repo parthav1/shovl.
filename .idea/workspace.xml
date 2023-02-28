@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="9ea25099-141d-41e4-83b2-a6a4157e46c8" name="Changes" comment="" />
+=======
+    <list default="true" id="692ed5fa-1396-44a0-bcbb-1f2c273dee5d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/BackEnd/GoodFirms_scraping.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/GoodFirms_scraping.py" afterDir="false" />
+    </list>
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< Updated upstream
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -21,6 +28,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2MDKrhw1yI8X2eqdB7Usnr2KNUD" />
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MM56ZWK8gMUHYqTp1rDZDJaCWg" />
+>>>>>>> Stashed changes
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,11 +50,19 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< Updated upstream
       <changelist id="9ea25099-141d-41e4-83b2-a6a4157e46c8" name="Changes" comment="" />
       <created>1677296913895</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677296913895</updated>
+=======
+      <changelist id="692ed5fa-1396-44a0-bcbb-1f2c273dee5d" name="Changes" comment="" />
+      <created>1677564435809</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677564435809</updated>
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
