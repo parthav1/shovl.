@@ -1,3 +1,5 @@
+# pylint: disable=import-error
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -6,11 +8,11 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 import supabase
-from supabase import create_client, Client
+from supabase import create_client, Client # type: ignore
 
 url = os.environ.get("SUPABASE_URL")
 key = os.environ.get("SUPABASE_KEY")
-supabase = supabase.create_client(url, key)
+supabase = supabase.create_client(url, key) # type: ignore
 
 # Create your views here.
 from django.http import HttpResponse
