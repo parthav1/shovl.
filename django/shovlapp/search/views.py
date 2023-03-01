@@ -22,6 +22,9 @@ techs = ['Augmented / Virtual Reality', 'Artificial Intelligence / Machine Learn
 arvr_vendors = supabase.table('shovl_arvr').select("*").execute()
 sorted_arvr_vendors = sorted(arvr_vendors.data, key=lambda x: x.get("ranking", 0))
 
+ai_vendors = supabase.table('shovl_ai').select("*").execute()
+sorted_ai_vendors = sorted(ai_vendors.data, key=lambda x: x.get("ranking", 0))
+
 def index(request, techs=techs):
     context = {
         'techs': techs
@@ -36,7 +39,11 @@ def arvr(request):
     return render(request, 'search/categories/arvr.html', context)
 
 def ai(request):
-    return render(request, 'search/categories/ai.html')
+    context = {
+        'ai_vendors': sorted_arvr_vendors,
+    }
+
+    return render(request, 'search/categories/ai.html', context)
 
 def bigdata(request):
     return render(request, 'search/categories/bigdata.html')
