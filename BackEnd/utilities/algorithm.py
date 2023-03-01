@@ -1,7 +1,11 @@
 import os
 import math
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import pandas as pd
+=======
+import datetime
+>>>>>>> Stashed changes
 =======
 import datetime
 >>>>>>> Stashed changes
@@ -38,7 +42,7 @@ for i, vendor in enumerate(sorted(arvr_vendors, key=lambda x: x['shovl_score'], 
              num_reviews_weight * vendor['review_count'] +
              sentiment_weight * sentiment_score +
              age_weight * age_score)
-    scaled_score = min(score * 20, 100)
+    scaled_score = round(min(score * 20, 100),2)
     supabase.table("shovl_arvr").update({"shovl_score": scaled_score, "ranking": i+1}).eq("id", vendor_id).execute()
     print(f"Ranking: {i+1}, Vendor: {vendor_id}, Score: {scaled_score}")
 
