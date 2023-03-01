@@ -3,6 +3,16 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 
+from dotenv import load_dotenv
+load_dotenv()
+import os
+import supabase
+from supabase import create_client, Client # type: ignore
+
+url = os.environ.get("SUPABASE_URL")
+key = os.environ.get("SUPABASE_KEY")
+supabase = supabase.create_client(url, key) # type: ignore
+
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -18,4 +28,8 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    watchlist_vendors = supabase.table('shovl_watchlist').select("*").execute()
+    context = {
+        'watchlist_venders': watchlist_vendors.data,
+    }
+    return render(request, 'users/profile.html', context)
