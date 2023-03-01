@@ -10,7 +10,7 @@ url = os.environ.get("SUPABASE_URL")
 key = os.environ.get("SUPABASE_KEY")
 
 supabase = create_client(url, key) # type: ignore
-response  = supabase.table('shovl_arvr').select("*").execute()
+response  = supabase.table('shovl_ai').select("*").execute()
 arvr_vendors = response.data
 
 review_text = []
@@ -26,4 +26,4 @@ for vendor in arvr_vendors:
         sentiment_score = blob.sentiment.polarity
         scores.append(sentiment_score)
     overall_score = sum(scores) / len(scores)
-    print(supabase.table("shovl_arvr").update({"sentiment_score": overall_score}).eq("id", vendor_id).execute())
+    print(supabase.table("shovl_ai").update({"sentiment_score": overall_score}).eq("id", vendor_id).execute())
