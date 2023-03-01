@@ -15,7 +15,7 @@ url = os.environ.get("SUPABASE_URL")
 key = os.environ.get("SUPABASE_KEY")
 
 supabase = create_client(url, key)
-response  = supabase.table('shovl_arvr').select("*").execute()
+response  = supabase.table('shovl_ai').select("*").execute()
 arvr_vendors = response.data
 
 rating_weight = 0.602
@@ -42,7 +42,7 @@ for i, vendor in enumerate(sorted(arvr_vendors, key=lambda x: x['shovl_score'], 
              age_weight * age_score)
     scaled_score = round(min(score * 20, 100),2)
     stars= math.floor(vendor['rating'])
-    supabase.table("shovl_arvr").update({"shovl_score": scaled_score, "ranking": i+1 , "stars": stars }).eq("id", vendor_id).execute()
+    supabase.table("shovl_ai").update({"shovl_score": scaled_score, "ranking": i+1 , "stars": stars }).eq("id", vendor_id).execute()
     print(f"Ranking: {i+1}, Vendor: {vendor_id}, Score: {scaled_score}, Stars: {stars}")
 
 

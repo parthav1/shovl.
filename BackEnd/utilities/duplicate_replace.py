@@ -9,7 +9,7 @@ load_dotenv()
 url = os.environ.get("SUPABASE_URL")
 key = os.environ.get("SUPABASE_KEY")
 supabase = create_client(url, key)
-response  = supabase.table('shovl_arvr').select("*").execute()
+response  = supabase.table('shovl_ai').select("*").execute()
 arvr_vendors = response.data
 
 #Traverse through array find, merge and delete duplicate
@@ -20,4 +20,4 @@ for i, vendor1 in enumerate(arvr_vendors):
             vendor1['rating'] = (vendor1['rating'] * vendor1['review_count'] + vendor2['rating'] * vendor2['review_count']) / (vendor1['review_count'] + vendor2['review_count'])
             vendor1['sentiment_score'] = (vendor1['sentiment_score'] * vendor1['review_count'] + vendor2['sentiment_score'] * vendor2['review_count']) / (vendor1['review_count'] + vendor2['review_count'])
 
-            supabase.table('shovl_arvr').delete().eq('id', vendor2['id']).execute()
+            supabase.table('shovl_ai').delete().eq('id', vendor2['id']).execute()
