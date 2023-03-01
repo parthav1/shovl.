@@ -26,11 +26,25 @@ def get_company_reviews(company_profile):
     for item in div_target:
         company_reviews.append(item.text.strip())
 
-    return [company_reviews]
+    return company_reviews
+
+def get_first_two_ratings(company_profile):
+
+    url = "https://www.goodfirms.co" + str(company_profile) + "#reviews"
+    response = requests.get(url)
+
+    soup = BeautifulSoup(response.content, 'lxml')
+    target = soup.find('div', class_='review-rating-breakdown-star')
+
+    ratings = []
+    for i in range(2):
+        ratings.append(len(target.find('div')))
+
+    return ratings
 
 def searchGoodFirms(category, data_path):
     companies = {}
-    for page in range(1, 14):
+    for page in range(1, 6):
         url = "https://www.goodfirms.co/" + category + "?sort_by=1"
         if page > 1:
             url = url + "&page=" + str(page)
@@ -39,18 +53,17 @@ def searchGoodFirms(category, data_path):
         soup = BeautifulSoup(response.content, 'lxml')
 
         target = soup.find_all('li', class_= 'service-provider')
-        count = 1
         for item in target:
-            print(count)
-            count += 1
             company_name = item.find('div', class_= 'entity-header-wrapper').find('h3').find('a').\
                 find('span', itemprop='name').text
             print(company_name)
             companies[(company_name.strip())] = {
                 'category': category,
-                'profile': '',
+                'first_two_ratings': '',
                 'reviews': '',
                 'price': '',
+                'website_url': '',
+                'date_founded': ''
             }
 
             try:
@@ -58,15 +71,25 @@ def searchGoodFirms(category, data_path):
                 companies[(company_name.strip())]['profile'] = profile
             except AttributeError:
                 pass
-            print(profile)
 
             reviews = get_company_reviews(profile)
-            print(reviews)
+
+            first_two_ratings = get_first_two_ratings(profile)
 
             price = item.find('div', class_= 'firm-pricing').text
-            print(price)
 
-            time.sleep(7)
+            date_founded = item.find('div', class_= 'firm-founded').text
+
+            website_url = item.find('div', class_= 'firms-r').find('a').attrs['href']
+
+            companies[(company_name.strip())]['reviews'] = reviews
+            companies[(company_name.strip())]['first_two_ratings'] = first_two_ratings
+            companies[(company_name.strip())]['price'] = price
+            companies[(company_name.strip())]['website_url'] = website_url
+            companies[(company_name.strip())]['date_founded'] = date_founded
+
+            # need to sleep thread to limit number of requests, adjust time if needed
+            #time.sleep(5)
 
             with open(data_path, mode='a', encoding='utf-8', newline='') as file:
                 writer = csv.writer(file)
@@ -75,11 +98,19 @@ def searchGoodFirms(category, data_path):
                         company_name.strip(),
                         data.get('category', ''),
                         data.get('price'),
+                        data.get('date_founded'),
                         '; '.join(data.get('reviews', []))
                     ])
 
 
 def main():
     searchGoodFirms("big-data-analytics", parse_args().data)
-    searchGoodFirms("artificial-intelligence", parse_args().data)
+    #searchGoodFirms("artificial-intelligence", parse_args().data)
+    #searchGoodFirms("it-services", parse_args().data)
+    #searchGoodFirms("cloud-computing-companies", parse_args().data)
+    #searchGoodFirms("augmented-virtual-reality", parse_args().data)
+    #searchGoodFirms("internet-of-things", parse_args().data)
+    #searchGoodFirms("ecommerce-development-companies", parse_args().data)
 
+if __name__ == "__main__":
+    main()
