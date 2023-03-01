@@ -5,13 +5,7 @@
 .idea
 
 ### Data ###
-/BackEnd/Data/data_master.csv
-/BackEnd/Data/big-data.csv
-/BackEnd/Data/blockchain.csv
-/BackEnd/Data/software-development.csv
-/BackEnd/Data/virtual-reality.csv
-/BackEnd/Data/web-development.csv
-/BackEnd/data_visual.ipynb
+/BackEnd/Data/
 
 ### Flask ###
 instance/*
