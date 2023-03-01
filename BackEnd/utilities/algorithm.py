@@ -1,14 +1,12 @@
 import os
 import math
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
 import pandas as pd
-=======
+
 import datetime
->>>>>>> Stashed changes
-=======
+
 import datetime
->>>>>>> Stashed changes
+
 from supabase import create_client
 from dotenv import load_dotenv
 load_dotenv()
